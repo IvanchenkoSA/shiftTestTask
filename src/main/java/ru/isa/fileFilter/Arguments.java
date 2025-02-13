@@ -2,7 +2,10 @@ package ru.isa.fileFilter;
 
 import com.beust.jcommander.Parameter;
 
+import java.util.ArrayList;
 import java.util.List;
+
+// Из полей этого класса будут извлекаться файлы для чтения и записи конечных файлов, с опциональной конфигурацией и предоставлением статистики
 
 public class Arguments {
     private List<String> inputFiles;
@@ -11,7 +14,8 @@ public class Arguments {
     private boolean append = false;
     private Statistics statistics;
 
-    public Arguments(String prefix, String path, boolean append, Statistics statistics) {
+    public Arguments(String prefix, String path, boolean append, Statistics statistics, List<String> inputFiles) {
+        this.inputFiles = inputFiles;
         this.prefix = prefix;
         this.path = path;
         this.append = append;
@@ -32,5 +36,9 @@ public class Arguments {
 
     public Statistics getStatistics() {
         return statistics;
+    }
+
+    public List<String> getInputFiles() {
+        return inputFiles;
     }
 }
