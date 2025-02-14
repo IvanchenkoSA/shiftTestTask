@@ -1,32 +1,29 @@
 package ru.isa.fileFilter;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
 
 // Класс с отсортированными листами, содержащим данные для статистики
 
 public class SortResult {
-    private List<String> intList;
-    private List<String> floatList;
-    private List<String> stringList;
+    private final List<String> intList;
+    private final List<String> floatList;
+    private final List<String> stringList;
 
-    private int intCount;
-    private long maxIntValue;
-    private long minIntValue;
-    private long sumIntValue;
-    private long avgIntValue;
+    private final int intCount;
+    private final long maxIntValue;
+    private final long minIntValue;
+    private final long sumIntValue;
+    private final long avgIntValue;
 
-    private double doubleCount;
-    private double maxDoubleValue;
-    private double minDoubleValue;
-    private double sumDoubleValue;
-    private double avgDoubleValue;
+    private final double doubleCount;
+    private final double maxDoubleValue;
+    private final double minDoubleValue;
+    private final double sumDoubleValue;
+    private final double avgDoubleValue;
 
-    private int stringCount;
-    private int lenShortestString;
-    private int lenLongestString;
+    private final int stringCount;
+    private final int lenShortestString;
+    private final int lenLongestString;
 
     public SortResult(List<String> intList, List<String> floatList, List<String> stringList, int intCount,
                       long maxIntValue, long minIntValue, long sumIntValue, long avgIntValue, double doubleCount,

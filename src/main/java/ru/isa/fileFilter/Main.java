@@ -1,18 +1,10 @@
 package ru.isa.fileFilter;
 
-import com.beust.jcommander.JCommander;
-
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Main {
-    static String[] str = {"-f", "-a", "in2.txt"};
+    static String[] str = {"-f", "-a", "-p", "sample-", "-o", "/simple Path/target Path", "in2.txt", "in1.txt"};
     public static void main(String[] args) {
         ArgumentParser parser = new ArgumentParserImpl();
         FileManager fileManager = new FileManagerImpl();
@@ -24,13 +16,13 @@ public class Main {
 
 
         if (arguments.getPrefix() != null) {
-            fileManager.writeFile(sortData.getStringList(), arguments.getPrefix() + "strings.txt", arguments.isAppend());
-            fileManager.writeFile(sortData.getFloatList(), arguments.getPrefix() + "floats.txt", arguments.isAppend());
-            fileManager.writeFile(sortData.getIntList(), arguments.getPrefix() + "integers.txt", arguments.isAppend());
+            fileManager.writeFile(sortData.getStringList(), arguments.getPrefix() + "strings.txt", arguments.isAppend(), arguments.getPath());
+            fileManager.writeFile(sortData.getFloatList(), arguments.getPrefix() + "floats.txt", arguments.isAppend(), arguments.getPath());
+            fileManager.writeFile(sortData.getIntList(), arguments.getPrefix() + "integers.txt", arguments.isAppend(), arguments.getPath());
         } else {
-            fileManager.writeFile(sortData.getStringList(), "strings.txt", arguments.isAppend());
-            fileManager.writeFile(sortData.getFloatList(), "floats.txt", arguments.isAppend());
-            fileManager.writeFile(sortData.getIntList(), "integers.txt", arguments.isAppend());
+            fileManager.writeFile(sortData.getStringList(), "strings.txt", arguments.isAppend(), arguments.getPath());
+            fileManager.writeFile(sortData.getFloatList(), "floats.txt", arguments.isAppend(), arguments.getPath());
+            fileManager.writeFile(sortData.getIntList(), "integers.txt", arguments.isAppend(), arguments.getPath());
         }
 
         if (arguments.getStatistics() == Statistics.SHORT) {
