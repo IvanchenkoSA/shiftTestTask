@@ -1,18 +1,16 @@
 package ru.isa.fileFilter;
 
-import com.beust.jcommander.Parameter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Из полей этого класса будут извлекаться файлы для чтения и записи конечных файлов, с опциональной конфигурацией и предоставлением статистики
 
 public class Arguments {
-    private List<String> inputFiles;
-    private String prefix;
-    private String path;
-    private boolean append = false;
-    private Statistics statistics;
+    private final List<String> inputFiles;
+    private final String prefix;
+    private final String path;
+    private final boolean append;
+    private final Statistics statistics;
 
     public Arguments(String prefix, String path, boolean append, Statistics statistics, List<String> inputFiles) {
         this.inputFiles = inputFiles;
