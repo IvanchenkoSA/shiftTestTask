@@ -15,6 +15,8 @@ public class FileManagerImpl implements FileManager {
                 while ((line = br.readLine()) != null) {
                     outputFiles.add(line);
                 }
+            } catch (FileNotFoundException e) {
+                System.out.println(inputFile + " File not found");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -28,21 +30,33 @@ public class FileManagerImpl implements FileManager {
             return;
         }
 
-        String dir = System.getProperty("user.dir");
+        if (directory != null) {
+            String dir = System.getProperty("user.dir");
 
-        String fullPath = dir + File.separator + directory + File.separator + fileName;
-        File file = new File(fullPath);
+            String fullPath = dir + File.separator + directory + File.separator + fileName;
+            File file = new File(fullPath);
 
-        try {
-            file.getParentFile().mkdirs();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, append))) {
+            try {
+                file.getParentFile().mkdirs();
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, append))) {
+                    for (String line : stringList) {
+                        writer.write(line);
+                        writer.newLine();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            String filePath = fileName;
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, append))) {
                 for (String line : stringList) {
                     writer.write(line);
                     writer.newLine();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

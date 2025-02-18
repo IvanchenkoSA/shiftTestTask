@@ -2,7 +2,6 @@ package ru.isa.fileFilter;
 
 import java.util.List;
 
-// Класс с отсортированными листами, содержащим данные для статистики
 
 public class SortResult {
     private final List<String> intList;

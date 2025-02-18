@@ -9,6 +9,7 @@ public class DataSorterImpl implements DataSorter {
         List<String> intList = new ArrayList<>();
         List<String> doubleList = new ArrayList<>();
         List<String> strList = new ArrayList<>();
+
         int intCount = 0;
         long maxIntValue = 0;
         long minIntValue = Integer.MAX_VALUE;
@@ -24,6 +25,7 @@ public class DataSorterImpl implements DataSorter {
         int stringCount = 0;
         int lenShortestString = Integer.MAX_VALUE;
         int lenLongestString = 0;
+
         for (String string : inputList) {
             if (isLong(string)) {
                 intList.add(string);
@@ -53,7 +55,6 @@ public class DataSorterImpl implements DataSorter {
                 lenLongestString = Math.max(string.length(), lenLongestString);
             }
         }
-
 
         return new SortResult(intList, doubleList, strList, intCount, maxIntValue, minIntValue,
                 sumIntValue, avgIntValue, doubleCount, maxDoubleValue, minDoubleValue, sumDoubleValue,
@@ -87,5 +88,4 @@ public class DataSorterImpl implements DataSorter {
             return false;
         }
     }
-
 }

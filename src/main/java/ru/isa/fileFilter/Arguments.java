@@ -3,7 +3,6 @@ package ru.isa.fileFilter;
 
 import java.util.List;
 
-// Из полей этого класса будут извлекаться файлы для чтения и записи конечных файлов, с опциональной конфигурацией и предоставлением статистики
 
 public class Arguments {
     private final List<String> inputFiles;

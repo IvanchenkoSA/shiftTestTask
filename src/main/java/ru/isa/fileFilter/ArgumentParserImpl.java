@@ -13,20 +13,17 @@ public class ArgumentParserImpl implements ArgumentParser {
                 .addObject(arguments)
                 .build()
                 .parse(args);
-
         Statistics statistics;
 
-        if (arguments.shortStat) {
+        if (arguments.fullStat && arguments.shortStat) {
+            throw new IllegalArgumentException("Select either -f or -s");
+        } else if (arguments.shortStat) {
             statistics = Statistics.SHORT;
         } else if (arguments.fullStat) {
             statistics = Statistics.FULL;
         } else {
             statistics = Statistics.NO;
         }
-
-
-
-
         return new Arguments(arguments.prefix, arguments.path, arguments.append, statistics, arguments.inputFiles);
     }
 
@@ -43,7 +40,5 @@ public class ArgumentParserImpl implements ArgumentParser {
         public boolean fullStat;
         @Parameter
         public List<String> inputFiles;
-
     }
-
 }
